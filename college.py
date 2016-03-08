@@ -195,14 +195,17 @@ def pref_popul(popul, collegelist, option):
     
     return filteredlist
 
-def get_result(vr = 600, wr = 600, mt = 600):
+def get_result(vr = 600, wr = 600, mt = 600, div = "low", 
+    pubprv = 0, maxcost = 200000, majstr = "engineering; science",
+    pop = 100000, popchoice = "less"):
+
     filteredlist = []
     college_list = sat(vr,wr,mt,allcollegelist)
-    # college_list = diversity("low", college_list)
-    # college_list = public_private(college_list, 2)
-    # college_list = cost(college_list, 20000)
-    # college_list = major("engineering; english",college_list)
-    # college_list = pref_popul(10000, college_list, 'less')
+    college_list = diversity(div, college_list)
+    college_list = public_private(college_list, pubprv)
+    college_list = cost(college_list, maxcost)
+    college_list = major(majstr,college_list)
+    college_list = pref_popul(pop, college_list, popchoice)
     for i in college_list:
         filteredlist.append(college['INSTNM'][i])
     return college_list
@@ -212,18 +215,27 @@ def college_dict(collegelist):
     lonlist = []
     namelist = []
     urllist = []
+    admlist = []
+    citylist = []
+    stlist = []
     for collegeid in collegelist:
         latlist.append(college.LATITUDE[collegeid])
         lonlist.append(college.LONGITUDE[collegeid])
         namelist.append(college.INSTNM[collegeid])
         urllist.append(college.INSTURL[collegeid])
+        admlist.append(college.ADM_RATE[collegeid])
+        citylist.append(college.CITY[collegeid])
+        stlist.append(college.STABBR[collegeid])
 
     source = ColumnDataSource(
         data=dict(
-            lat=latlist,
-            lon=lonlist,
-            name=namelist,
-            url=urllist
+            lat = latlist,
+            lon = lonlist,
+            name = namelist,
+            url = urllist,
+            adm = admlist,
+            city = citylist,
+            state = stlist
         )
     )
     return source
