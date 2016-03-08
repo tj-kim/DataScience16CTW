@@ -130,19 +130,15 @@ def diversity(pref, collegelist):
 def public_private(collegelist, preference):
     """
     Outputs schools that users want either public, private, or both
-    Preference:
-        both = 0
-        public = 1
-        private = 2
     """
     output_list = []
-    if preference == 0: # Both Types
+    if preference == 'both': # Both Types
         output_list = collegelist
-    if preference == 1: # Public College
+    if preference == 'public': # Public College
         for i in collegelist:
             if str(college['NPT4_PUB'][i]) != 'nan':
                 output_list.append(i)
-    if preference == 2: # Private College
+    if preference == 'private': # Private College
         for i in collegelist:
             if str(college['NPT4_PRIV'][i]) != 'nan':
                 output_list.append(i)
@@ -193,12 +189,12 @@ def pref_popul(popul, collegelist, option):
     option = 'more' or 'less'
     """
     filteredlist = []
-    if option == 'more':
+    if option == 'more than':
         for i in collegelist:
             if college['UGDS'][i] > popul:
                 if i not in filteredlist:
                     filteredlist.append(i)
-    if option == 'less':
+    if option == 'less than':
         for i in collegelist:
             if college['UGDS'][i] < popul:
                 if i not in filteredlist:
@@ -207,7 +203,7 @@ def pref_popul(popul, collegelist, option):
     return filteredlist
 
 def get_result(vr = 600, wr = 600, mt = 600, div = "low", 
-    pubprv = 0, maxcost = 200000, majstr = "engineering; science",
+    pubprv = 'both', maxcost = 200000, majstr = "engineering; science",
     pop = 100000, popchoice = "less"):
 
     """
@@ -215,7 +211,7 @@ def get_result(vr = 600, wr = 600, mt = 600, div = "low",
     Key:
         vr, wr, mt, = sat score values inputed (integer)
         div = racial diversity at school (low, medium, high)
-        pubprv = public (1) or private (2) school, or include both (0)
+        pubprv = public or privat school, or include both (str)
         maxcost = maximum tuition (including scholarship subtraction) willing to pay
         majstr = type in desired majors separated by ';' (string)
         pop = desired population bench mark
