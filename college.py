@@ -5,16 +5,22 @@
 import pandas as pd
 from bokeh.models import ColumnDataSource
 
+# Import filtered dataframe
 college = pd.read_csv('new_college.csv')
+# Import dictionary used for mapping major to description
 dictionary = pd.read_csv('CollegeScorecard_Raw_Data/CollegeScorecardDataDictionary-09-12-2015.csv')
 
 ############################################################################
 #Global Variables
 ############################################################################
 
+# Creating allcollegelist for indexing, holds integer value from 0 to 7803, for each college
 allcollegelist = []
 for i in range(len(college)):
     allcollegelist.append(i)
+
+# Below are categories used in college search algorithm and display
+# They may not be used but are present here for reference
 
 alg_categories = ['CONTROL', 
                   'SATVR25', 'SATVR75', 'SATMT25', 'SATMT75', 'SATWR25', 'SATWR75',
@@ -41,6 +47,10 @@ for i in range(len(dictionary)):
     if str(dictionary.label[i]) != 'nan':
         dmajor[dictionary['VARIABLE NAME'][i]] = dictionary.label[i]
 
+############################################################################
+# Functions
+############################################################################
+
 def each_sat(score, column, collegelist, percentile):
     """
     Sub Function for section_sat
@@ -65,6 +75,7 @@ def section_sat(score, section, collegelist):
     """
     Runs section but both percentiles
     section = 'VR' or 'WR' or 'MT'
+    sub function of sat
     """
     column25 = 'SAT'+section+'25'
     column75 = 'SAT'+section+'75'
@@ -199,6 +210,20 @@ def get_result(vr = 600, wr = 600, mt = 600, div = "low",
     pubprv = 0, maxcost = 200000, majstr = "engineering; science",
     pop = 100000, popchoice = "less"):
 
+    """
+    Utilizes all the college filtering algorithm functions above
+    Key:
+        vr, wr, mt, = sat score values inputed (integer)
+        div = racial diversity at school (low, medium, high)
+        pubprv = public (1) or private (2) school, or include both (0)
+        maxcost = maximum tuition (including scholarship subtraction) willing to pay
+        majstr = type in desired majors separated by ';' (string)
+        pop = desired population bench mark
+        popchoice = indicates either greater/lesser than population bench mark (more, lesss) (string)
+
+    Returns filtered version of allcollegelist with recommended colleges
+    """
+
     filteredlist = []
     college_list = sat(vr,wr,mt,allcollegelist)
     college_list = diversity(div, college_list)
@@ -211,6 +236,17 @@ def get_result(vr = 600, wr = 600, mt = 600, div = "low",
     return college_list
 
 def college_dict(collegelist):
+    """
+    Creates lists for referencing recommended college labels
+    Labels:
+        School Location (latlist, lonlist)
+        School Name (namelist)
+        School Web Site (urllist)
+        School Admission rate (admlist)
+        School City (citylist)
+        School statelist (stlist)
+    """
+    # Create empty holder lists for each label
     latlist = []
     lonlist = []
     namelist = []
@@ -218,6 +254,8 @@ def college_dict(collegelist):
     admlist = []
     citylist = []
     stlist = []
+
+    # add components into holder list
     for collegeid in collegelist:
         latlist.append(college.LATITUDE[collegeid])
         lonlist.append(college.LONGITUDE[collegeid])
