@@ -18,6 +18,28 @@ college_gui.py: Uses Tkinter library to build a graphic user interface for users
 
 college_map.py: Uses Bokeh library to generate map with schools printed onto map of US. Calls upon college.py and college_gui.py to generate the map.
 
+### CSV Files
+new_college.csv: Output of new_data_csv_book.ipynb. It holds filtered information of the entire collegescorecard dataset.
+
+CollegeScorecardDataDictionary-09-12-2015.csv: Holds dictionary of every column name and description in original collegescorecard dataset. We use it in alg_finalized_1_1.ipynb and college.py to map the column names of different major to definitions.
+
 ### PDF Files
 
-ChangetheWorldProposal.pdf: Initial Project Proposal that outlines what we want to accomplish for this project
+ChangetheWorldProposal.pdf: Initial Project Proposal that outlines what we want to accomplish for this project.
+
+
+## Alterations to the Project Proposal
+
+After working on the project, we decided to change our MVP and final output. Our initial goals mostly included:
+
+- Creating a single axis spectrum graph with a selectable characteristic to map colleges onto it.
+
+We wanted to alter that goal into something else:
+
+- Mapping the final college locations onto a map of the US
+
+For the following reasons:
+
+- People did not understand when we attempted to explain our initial idea.
+- It allowed us to emphasize the data more graphically and visually appealing.
+- Helped us learn Bokeh, a new a slightly challenging library to implement initially.
