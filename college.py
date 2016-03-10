@@ -7,6 +7,7 @@ from bokeh.models import ColumnDataSource
 
 # Import filtered dataframe
 college = pd.read_csv('new_college.csv')
+
 # Import dictionary used for mapping major to description
 dictionary = pd.read_csv('CollegeScorecard_Raw_Data/CollegeScorecardDataDictionary-09-12-2015.csv')
 
@@ -102,8 +103,11 @@ def sat(vrscore, wrscore, mtscore, collegelist):
 def diversity(pref, collegelist):
     """
     Takes user input in how much racial diversity they want at school
-    pref = 'low' or 'medium', or 'high'
+    pref = 'does not matter', low' or 'medium', or 'high'
     """
+    if pref == 'does not matter':
+        return collegelist
+
     r = alg_race[1:]
     high = []
     medium = collegelist[:]
@@ -202,9 +206,9 @@ def pref_popul(popul, collegelist, option):
     
     return filteredlist
 
-def get_result(vr = 600, wr = 600, mt = 600, div = "low", 
+def get_result(vr = 600, wr = 600, mt = 600, div = "medium", 
     pubprv = 'both', maxcost = 200000, majstr = "engineering; science",
-    pop = 100000, popchoice = "less"):
+    pop = 100000, popchoice = "less than"):
 
     """
     Utilizes all the college filtering algorithm functions above
@@ -220,15 +224,15 @@ def get_result(vr = 600, wr = 600, mt = 600, div = "low",
     Returns filtered version of allcollegelist with recommended colleges
     """
 
-    filteredlist = []
+    # filteredlist = []
     college_list = sat(vr,wr,mt,allcollegelist)
     college_list = diversity(div, college_list)
     college_list = public_private(college_list, pubprv)
     college_list = cost(college_list, maxcost)
     college_list = major(majstr,college_list)
     college_list = pref_popul(pop, college_list, popchoice)
-    for i in college_list:
-        filteredlist.append(college['INSTNM'][i])
+    # for i in college_list:
+        # filteredlist.append(college['INSTNM'][i])
     return college_list
 
 def college_dict(collegelist):

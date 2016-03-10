@@ -63,25 +63,19 @@ def build_map(collegelist):
             tooltips="""
             <div>
                 <div>
-                    <img
-                        src="@url" height="42" alt="@url" width="42"
-                        style="float: left; margin: 0px 15px 15px 0px;"
-                        border="2"
-                    ></img>
-                </div>
-                <div>
                     <span style="font-size: 17px; font-weight: bold;">@name</span>
-                    <span style="font-size: 15px; color: #966;">[$index]</span>
                 </div>
                 <div>
-                    <a 
-                        href="@url" target="_blank"
-                    >School Website</a>
+                    <span style="font-size: 14px;">@state</span>
+                    <span style="font-size: 13px;">@city</span>
                 </div>
                 <div>
-                    <span style="font-size: 15px;">Location</span>
-                    <span style="font-size: 10px; color: #696;">($x, $y)</span>
+                    <span style="font-size: 13px;">Admission Rate</span>
+                    <span style="font-size: 13px; color: #696;">@adm</span>
                 </div>
+                <div>
+                    <span style="font-size: 13px;">@url</span>
+                </div>                
             </div>
             """,
             callback = CustomJS(args={'source': source}, code="source.set('selected', cb_data['index']);"),
@@ -104,5 +98,15 @@ def build_map(collegelist):
 
     show(p)
 
-collegelist =  c.get_result()
-build_map(collegelist)
+# collegeslist = c.get_result(
+#     vr = 800, 
+#     wr = 800, 
+#     mt = 800, 
+#     div = "does not matter", 
+#     pubprv = 'both', 
+#     maxcost = 2000000, 
+#     majstr = "engineering", 
+#     pop = 1000, 
+#     popchoice = "less than")
+# print collegeslist
+# build_map(collegeslist)

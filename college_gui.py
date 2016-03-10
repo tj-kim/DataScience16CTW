@@ -56,7 +56,7 @@ class College(tk.Tk):
 
         #Diversity
         self.labeldiv.set("Diversity")
-        div = ['high','medium','low']
+        div = ['does not matter', 'high','medium','low']
         self.label_div = tk.Label(self,textvariable=self.labeldiv)
         self.label_div.grid(column=0,row=3,sticky='W')
         self.optiondiv.set(div[0])
