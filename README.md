@@ -14,9 +14,9 @@ alg_finalized_1_1.ipynb : Ipython notebook with walkthrough and documentation on
 
 college.py: Equivalent to alg_finalized_1_1 except put into a py file. This allows other py files to import it and use it. Holds algorithms that filters colleges out based upon user input.
 
-college_gui.py: Uses Tkinter library to build a graphic user interface for users to to input their preferences and information. This file is imported by college_map for final using.
+college_gui.py: Uses Tkinter library to build a graphic user interface for users to to input their preferences and information. This file imports college_map.py and college.py for final using.
 
-college_map.py: Uses Bokeh library to generate map with schools printed onto map of US. Calls upon college.py and college_gui.py to generate the map.
+college_map.py: Uses Bokeh library to generate map with schools printed onto map of US.
 
 ### CSV Files
 new_college.csv: Output of new_data_csv_book.ipynb. It holds filtered information of the entire collegescorecard dataset.
