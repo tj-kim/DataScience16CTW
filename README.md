@@ -3,7 +3,9 @@
 Jee Hyun Kim & TJ Kim
 
 +--------------------------+
+
    Repository Guidelines
+
 +--------------------------+
 
 new_data_csv_book.ipynb: 
