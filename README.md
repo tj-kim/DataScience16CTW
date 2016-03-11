@@ -10,6 +10,8 @@ new_data_csv_book.ipynb: Ipython notebook with walkthrough and documentation thr
 
 alg_finalized_1_1.ipynb : Ipython notebook with walkthrough and documentation on algorithms used to filter out colleges through user preference input.
 
+majoroveryears: Ipython notebook with data exploration and visualization of colleges over the years. There is a focus on growth and decline of college major rates throughout the years. Although we altered our minimum viable product, we still wanted to stay loyal to our original goal and graph data on axis.
+
 ### Py Files
 
 college.py: Equivalent to alg_finalized_1_1 except put into a py file. This allows other py files to import it and use it. Holds algorithms that filters colleges out based upon user input.
@@ -49,6 +51,6 @@ Here we use the college finder ourselves. Initially we run with python college_g
 
 ![an image alt text](image/gui_demo.png "Sample Gui Input")
 
-After we hit the search button, a new tab in the internet opens! It is a map of the US with the colleges marked on it as dots. From here, users can hover over the dots to get further information about each college such as name and website. An example screenshot is presented below
+After we hit the search button, a new tab in the internet opens! It is a map of the US with the colleges marked on it as dots. From here, users can hover over the dots to get further information about each college such as name and website. An example screenshot is presented below.
 
 ![an image alt text](image/map_demo.png "Sample Map Output")
