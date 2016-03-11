@@ -27,7 +27,6 @@ CollegeScorecardDataDictionary-09-12-2015.csv: Holds dictionary of every column 
 
 ChangetheWorldProposal.pdf: Initial Project Proposal that outlines what we want to accomplish for this project.
 
-
 ## Alterations to the Project Proposal
 
 After working on the project, we decided to change our MVP and final output. Our initial goals mostly included:
