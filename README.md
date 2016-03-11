@@ -48,3 +48,5 @@ For the following reasons:
 
 
 ![an image alt text](image/gui_demo.png "Sample Gui Input")
+
+![an image alt text](image/map_demo.png "Sample Map Output")
