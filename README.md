@@ -4,13 +4,19 @@ Jee Hyun Kim & TJ Kim
 
 ## Repository Guidelines
 
+### Markdown Files
+
+README.md: The current displayed file. Holds an overview of the github repo.
+
+mid_project_checkin.md: Mid project analysis and update of the project.
+
 ### Ipython Notebooks
 
 new_data_csv_book.ipynb: Ipython notebook with walkthrough and documentation through taking initial data csv downloaded from collegescorecard, and filtering out data columns we deem unuseful. Output is "new_college.csv" file, with filtered out columns.
 
 alg_finalized_1_1.ipynb : Ipython notebook with walkthrough and documentation on algorithms used to filter out colleges through user preference input.
 
-majoroveryears: Ipython notebook with data exploration and visualization of colleges over the years. There is a focus on growth and decline of college major rates throughout the years. Although we altered our minimum viable product, we still wanted to stay loyal to our original goal and graph data on axis.
+majoroveryears.ipynb: Ipython notebook with data exploration and visualization of colleges over the years. There is a focus on growth and decline of college major rates throughout the years. Although we altered our minimum viable product, we still wanted to stay loyal to our original goal and graph data on axis.
 
 ### Py Files
 
@@ -25,9 +31,13 @@ new_college.csv: Output of new_data_csv_book.ipynb. It holds filtered informatio
 
 CollegeScorecardDataDictionary-09-12-2015.csv: Holds dictionary of every column name and description in original collegescorecard dataset. We use it in alg_finalized_1_1.ipynb and college.py to map the column names of different major to definitions.
 
+majors.csv: Filtered from the original collegescorecard dataset, this file holds all the columns of each colleges major percentages. Used for majoroveryears.ipynb.
+
 ### PDF Files
 
 ChangetheWorldProposal.pdf: Initial Project Proposal that outlines what we want to accomplish for this project.
+
+FinalOutputandReflection.pdf: Final Project Reflection that analyzes our project process and reflects on how we performed.
 
 ## Alterations to the Project Proposal
 
