@@ -43,10 +43,12 @@ For the following reasons:
 - It allowed us to emphasize the data more graphically and visually appealing.
 - Helped us learn Bokeh, a new a slightly challenging library to implement initially.
 
+## Example Use of College Finder
 
-
-
+Here we use the college finder ourselves. Initially we run with python college_gui.py, and input our preferences in the graphic user interface as such.
 
 ![an image alt text](image/gui_demo.png "Sample Gui Input")
+
+After we hit the search button, a new tab in the internet opens! It is a map of the US with the colleges marked on it as dots. From here, users can hover over the dots to get further information about each college such as name and website. An example screenshot is presented below
 
 ![an image alt text](image/map_demo.png "Sample Map Output")
