@@ -42,3 +42,9 @@ For the following reasons:
 - People did not understand when we attempted to explain our initial idea.
 - It allowed us to emphasize the data more graphically and visually appealing.
 - Helped us learn Bokeh, a new a slightly challenging library to implement initially.
+
+
+
+
+
+![an image alt text]({{ site.baseurl }}/images/gui_demo.png "Sample Gui Input")
