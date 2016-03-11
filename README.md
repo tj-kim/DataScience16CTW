@@ -47,4 +47,4 @@ For the following reasons:
 
 
 
-![an image alt text]({{ site.baseurl }}/images/gui_demo.png "Sample Gui Input")
+![an image alt text]({{ site.baseurl }}/image/gui_demo.png "Sample Gui Input")
