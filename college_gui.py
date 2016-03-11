@@ -1,14 +1,30 @@
+"""
+Description:
+
+Uses Tkinter library to build a graphic user interface for users to to input their preferences and information. This file imports college_map.py and college.py for final using.
+"""
+
+# Imports
 import Tkinter as tk
 import college as c
 import college_map as cm
 
+
 class College(tk.Tk):
+    """
+    Create College Class based upon Tkinter library
+    """
     def __init__(self,parent):
         tk.Tk.__init__(self,parent)
         self.parent = parent
         self.initialize()
 
     def initialize(self):
+        """
+        Builds the Tkinter Gui interface
+        Creates boxes and input types for different user input info for college search
+        """
+        # Drawing the boxes and layout for gui below
         self.grid()
 
         self.entryvr = tk.StringVar()
@@ -36,25 +52,28 @@ class College(tk.Tk):
         self.optionpop= tk.StringVar()
         self.labelpop = tk.StringVar()
 
+        # SAT Reading Score, entry input
         self.label_SATVR = tk.Label(self,textvariable=self.labelvr)
         self.label_SATVR.grid(column=0,row=0,sticky='W')
         self.labelvr.set("SAT Reading")
         self.entry_SATVR = tk.Entry(self,textvariable=self.entryvr)
         self.entry_SATVR.grid(column=1,columnspan = 2, row=0,sticky='EW')
 
+        # SAT Writing Score, entry input
         self.label_SATWR = tk.Label(self,textvariable=self.labelwr)
         self.label_SATWR.grid(column=0,row=1,sticky='W')
         self.labelwr.set("SAT Writing")
         self.entry_SATWR = tk.Entry(self,textvariable=self.entrywr)
         self.entry_SATWR.grid(column=1,columnspan = 2,row=1,sticky='EW')
 
+        # SAT Math Score, entry input
         self.label_SATMT = tk.Label(self,textvariable=self.labelmt)
         self.label_SATMT.grid(column=0,row=2,sticky='W')
         self.labelmt.set("SAT Math")
         self.entry_SATMT = tk.Entry(self,textvariable=self.entrymt)
         self.entry_SATMT.grid(column=1,columnspan = 2,row=2,sticky='EW')
 
-        #Diversity
+        #Diversity, option input
         self.labeldiv.set("Diversity")
         div = ['does not matter', 'high','medium','low']
         self.label_div = tk.Label(self,textvariable=self.labeldiv)
@@ -63,7 +82,7 @@ class College(tk.Tk):
         self.option_div = tk.OptionMenu(self, self.optiondiv, *div)
         self.option_div.grid(column=1,columnspan = 2,row=3,sticky='EW')
 
-        #Public Private
+        #Public Private, option input
         self.labelpp.set("Public/Private")
         pp = ['both', 'public', 'private']
         self.label_pp = tk.Label(self,textvariable=self.labelpp)
@@ -72,14 +91,14 @@ class College(tk.Tk):
         self.option_pp = tk.OptionMenu(self, self.optionpp, *pp)
         self.option_pp.grid(column=1,columnspan = 2,row=4,sticky='EW')
 
-        #Maximum Cost
+        #Maximum Cost, entry input
         self.labelmc.set("Maximum Cost")
         self.label_MC = tk.Label(self,textvariable=self.labelmc)
         self.label_MC.grid(column=0,row=5,sticky='W')
         self.entry_MC = tk.Entry(self,textvariable=self.entrymc)
         self.entry_MC.grid(column=1,columnspan = 2, row=5,sticky='EW')
 
-        #Major
+        #Major, entry input
         self.labelmajor.set("Major")
         self.label_major = tk.Label(self,textvariable=self.labelmajor)
         self.label_major.grid(column=0,row=6,sticky='W')
@@ -87,7 +106,7 @@ class College(tk.Tk):
         self.entry_major = tk.Entry(self,textvariable=self.entrymajor)
         self.entry_major.grid(column=1,columnspan = 2, row=6,sticky='EW')
 
-        #Population
+        #Population, entry input, and then option (for less/more)
         pop = ['less than','more than']
         self.labelpop.set("Population")
         self.label_pop = tk.Label(self,textvariable=self.labelpop)
@@ -99,27 +118,23 @@ class College(tk.Tk):
         self.entry_pop.grid(column=2,row=7,sticky='EW')
 
 
-
+        # Search Button and Settings
         button = tk.Button(self,text=u"Search",
                                 command=self.OnButtonClick)
         button.grid(column=1,row=10)
 
-        # self.entry.bind("<Return>", self.OnPressEnter)
-        # self.entryVariable.set(u"Enter text here.")
-
-        # self.resultVariable = tk.StringVar()
-        # self.result = tk.Label(self,textvariable=self.resultVariable,
-        #                       anchor="w",fg="Black", bg = 'White')
-        # self.result.grid(column=0,row=5,columnspan=2,sticky='EW')
-        # self.resultVariable.set(u"Result")
-
         self.grid_columnconfigure(0,weight=1)
         self.resizable(True,False)
-        # self.resultVariable.set('Reading:'+self.entry_SATVR.get()+'Writing:'+self.entry_SATWR.get()+'Math:'+self.entry_SATMT.get())
+
         self.update()
         self.geometry(self.geometry())       
 
     def OnButtonClick(self):
+        """
+        Stores all values typed and selected in boxes
+        Values are transferred for algorithm and map display
+        """
+        # Storing Values
         collegelist =  c.get_result(
             vr = float(self.entry_SATVR.get()), 
             wr = float(self.entry_SATWR.get()), 
@@ -131,7 +146,7 @@ class College(tk.Tk):
             pop = float(self.entry_pop.get()),
             popchoice = self.optionpop.get()
             )
-        # self.resultVariable.set(flist)
+        # Building the map
         cm.build_map(collegelist)
 
 if __name__ == "__main__":

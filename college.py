@@ -1,3 +1,10 @@
+"""
+Description:
+
+Equivalent to alg_finalized_1_1 except put into a py file. This allows other py files to import it and use it. Holds algorithms that filters colleges out based upon user input.
+"""
+
+
 ############################################################################
 # Imports
 ############################################################################
