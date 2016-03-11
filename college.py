@@ -230,16 +230,13 @@ def get_result(vr = 600, wr = 600, mt = 600, div = "medium",
 
     Returns filtered version of allcollegelist with recommended colleges
     """
-
-    # filteredlist = []
     college_list = sat(vr,wr,mt,allcollegelist)
     college_list = diversity(div, college_list)
     college_list = public_private(college_list, pubprv)
     college_list = cost(college_list, maxcost)
     college_list = major(majstr,college_list)
     college_list = pref_popul(pop, college_list, popchoice)
-    # for i in college_list:
-        # filteredlist.append(college['INSTNM'][i])
+    
     return college_list
 
 def college_dict(collegelist):
